@@ -1,0 +1,1849 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coffee Website</title>
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <link rel="stylesheet"href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+    <!--link swiper css-->
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body> 
+
+<header>
+    <nav class="navbar section-content">
+        <a href="#" class="nav-logo">
+            <h2 class="logo-text">☕ Coffee</h2>
+        </a>
+        
+
+        <ul class="nav-menu">
+            <button id="menu-close-button" class="fas fa-times"></button>
+
+            <li class="nav-item"><a href="#home" class="nav-link">Home</a></li>
+            <li class="nav-item"><a href="#about" class="nav-link">About</a></li>
+            <li class="nav-item"><a href="#menu" class="nav-link">Menu</a></li>
+            <li class="nav-item"><a href="#testimonial" class="nav-link">Testimonial</a></li>
+            <li class="nav-item"><a href="#gallery" class="nav-link">Gallery</a></li>
+            <li class="nav-item"><a href="#contact" class="nav-link">Contact</a></li>
+        </ul>
+       <!-- theme toggle button -->
+        <button id="theme-toggle">
+            <i class="fa-solid fa-moon"></i>
+        </button>
+        <li class="nav-item">
+            <a href="#" class="search-icon">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            </a>
+       </li>
+
+       
+
+<!-- Live Search Box -->
+        <div class="search-box" id="search-box">
+
+        <div class="search-input-wrapper">
+            <input
+            type="text"
+            id="search-input"
+            placeholder="Search coffee..."
+            autocomplete="off">
+
+        <button id="search-submit" type="button">
+            <i class="fa-solid fa-search"></i>
+        </button>
+        </div>
+
+    <!-- Live Search Results -->
+    <div class="search-results" id="search-results"></div>
+
+    </div>
+<!-- cart icon button -->
+        <button class="cart-icon icon-button"
+        id="cart-button"
+        aria-label="Open cart"
+>
+
+            <i class="fa-solid fa-cart-shopping"></i>
+
+        <span
+        class="cart-count"
+        id="cart-count">
+        0
+        </span>
+
+         </button>
+
+        <!-- Login Button -->
+        <button class="login-button"id="login-button"type="button">
+            <i class="fa-solid fa-user"></i>
+             Login
+        </button>
+
+        <button id="menu-open-button" class="fas fa-bars"></button>
+    </nav>
+</header>
+
+<!-- =====================================
+     LOGIN POPUP
+===================================== -->
+
+<div
+    class="login-overlay"
+    id="login-overlay"
+>
+
+    <div
+        class="login-modal"
+        id="login-modal"
+    >
+
+        <!-- Close Button -->
+
+        <button
+            class="login-close"
+            id="login-close"
+            type="button"
+            aria-label="Close login"
+        >
+            <i class="fa-solid fa-xmark"></i>
+        </button>
+
+
+        <!-- Login Icon -->
+
+        <div class="login-icon">
+
+            <i class="fa-solid fa-user"></i>
+
+        </div>
+
+
+        <!-- Heading -->
+
+        <h2>Welcome Back!</h2>
+
+        <p class="login-subtitle">
+            Login to continue to Coffee House
+        </p>
+
+
+        <!-- Login Form -->
+
+        <form
+            class="login-form"
+            id="login-form"
+        >
+
+            <!-- Email -->
+
+            <div class="form-group">
+
+                <label for="login-email">
+                    Email Address
+                </label>
+
+                <div class="input-box">
+
+                    <i class="fa-solid fa-envelope"></i>
+
+                    <input
+                        type="email"
+                        id="login-email"
+                        placeholder="Enter your email"
+                        required
+                    >
+
+                </div>
+
+            </div>
+
+
+            <!-- Password -->
+
+            <div class="form-group">
+
+                <label for="login-password">
+                    Password
+                </label>
+
+                <div class="input-box">
+
+                    <i class="fa-solid fa-lock"></i>
+
+                    <input
+                        type="password"
+                        id="login-password"
+                        placeholder="Enter your password"
+                        required
+                        minlength="6"
+                    >
+
+                    <button
+                        type="button"
+                        class="password-toggle"
+                        id="password-toggle"
+                        aria-label="Show password"
+                    >
+                        <i class="fa-solid fa-eye"></i>
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- Remember + Forgot -->
+
+            <div class="login-options">
+
+                <label class="remember-me">
+
+                    <input
+                        type="checkbox"
+                        id="remember-me"
+                    >
+
+                    <span>
+                        Remember me
+                    </span>
+
+                </label>
+
+
+                <a
+                    href="#"
+                    id="forgot-password"
+                >
+                    Forgot Password?
+                </a>
+
+            </div>
+
+
+            <!-- Error Message -->
+
+            <p
+                class="login-error"
+                id="login-error"
+            ></p>
+
+
+            <!-- Login Button -->
+
+            <button
+                type="submit"
+                class="login-submit"
+            >
+
+                <i class="fa-solid fa-right-to-bracket"></i>
+
+                Login
+
+            </button>
+
+
+            <!-- Register -->
+
+            <p class="register-text">
+
+                Don't have an account?
+
+                <a
+                    href="#"
+                    id="register-link"
+                >
+                    Create Account
+                </a>
+
+            </p>
+
+        </form>
+
+    </div>
+
+</div>
+
+<!-- =====================================
+     CART DRAWER
+===================================== -->
+
+<div
+    class="cart-overlay"
+    id="cart-overlay"
+></div>
+
+
+<aside
+    class="cart-drawer"
+    id="cart-drawer"
+>
+
+    <!-- Cart Header -->
+
+    <div class="cart-header">
+
+        <div>
+
+            <h2>
+                <i class="fa-solid fa-cart-shopping"></i>
+                Your Cart
+            </h2>
+
+            <p>
+                Your selected coffee
+            </p>
+
+        </div>
+
+
+        <button
+            class="cart-close"
+            id="cart-close"
+            aria-label="Close cart"
+        >
+
+            <i class="fa-solid fa-xmark"></i>
+
+        </button>
+
+    </div>
+
+
+    <!-- Cart Items -->
+
+    <div
+        class="cart-items"
+        id="cart-items"
+    >
+
+        <!-- JavaScript will add items here -->
+
+    </div>
+
+
+    <!-- Empty Cart -->
+
+    <div
+        class="empty-cart"
+        id="empty-cart"
+    >
+
+        <i class="fa-solid fa-mug-hot"></i>
+
+        <h3>Your cart is empty</h3>
+
+        <p>
+            Add your favourite coffee to the cart.
+        </p>
+
+        <button
+            class="continue-shopping"
+            id="continue-shopping"
+        >
+            Continue Shopping
+        </button>
+
+    </div>
+
+
+    <!-- Cart Footer -->
+
+    <div
+        class="cart-footer"
+        id="cart-footer"
+    >
+
+        <div class="cart-summary">
+
+            <div>
+
+                <span>Subtotal</span>
+
+                <strong id="cart-subtotal">
+                    ₹0
+                </strong>
+
+            </div>
+
+
+            <div>
+
+                <span>Delivery</span>
+
+                <strong>
+                    Free
+                </strong>
+
+            </div>
+
+
+            <div class="cart-total">
+
+                <span>Total</span>
+
+                <strong id="cart-total">
+                    ₹0
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <button
+            class="checkout-button"
+            id="checkout-button"
+        >
+
+            <i class="fa-solid fa-lock"></i>
+
+            Proceed to Checkout
+
+        </button>
+
+    </div>
+
+</aside>
+
+<main>
+       
+
+        
+<!-- =====================================
+     PROFESSIONAL HOME / HERO SECTION
+===================================== -->
+
+<section class="hero-section" id="home">
+
+    <div class="hero-container">
+
+        <!-- LEFT CONTENT -->
+        <div class="hero-content">
+
+            <!-- Small Badge -->
+            <div class="hero-badge">
+                <i class="fa-solid fa-mug-hot"></i>
+                <span>Freshly Brewed • Every Day</span>
+            </div>
+
+
+            <!-- Main Heading -->
+            <h1 class="hero-title">
+
+                Start Your Day
+                <span>With Perfect Coffee.</span>
+
+            </h1>
+
+
+            <!-- Description -->
+            <p class="hero-description">
+
+                Experience rich aroma, premium roasted beans
+                and handcrafted coffee made specially for
+                your perfect moment.
+
+            </p>
+
+
+            <!-- Buttons -->
+            <div class="hero-buttons">
+
+                <a
+                    href="#menu"
+                    class="hero-btn primary-btn"
+                >
+                    <i class="fa-solid fa-cart-shopping"></i>
+                    Order Now
+                </a>
+
+
+                <a
+                    href="#menu"
+                    class="hero-btn secondary-btn"
+                >
+                    Explore Menu
+                    <i class="fa-solid fa-arrow-right"></i>
+                </a>
+
+            </div>
+
+
+            <!-- Rating -->
+            <div class="hero-rating">
+
+                <div class="rating-stars">
+
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+
+                </div>
+
+                <div class="rating-info">
+
+                    <strong>4.9/5</strong>
+
+                    <span>
+                        Loved by 2,000+ coffee lovers
+                    </span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- RIGHT CONTENT -->
+        <div class="hero-visual">
+
+            <!-- Background Circle -->
+            <div class="hero-circle"></div>
+
+
+            <!-- Coffee Image -->
+            <div class="hero-image-wrapper">
+
+                <img
+                    src="coffee-cup.png"
+                    alt="Freshly brewed coffee"
+                    class="hero-image"
+                >
+
+            </div>
+
+
+            <!-- Floating Card 1 -->
+            <div class="floating-card coffee-card">
+
+                <div class="floating-icon">
+                    <i class="fa-solid fa-mug-hot"></i>
+                </div>
+
+                <div>
+                    <strong>Premium Coffee</strong>
+                    <span>100% Arabica Beans</span>
+                </div>
+
+            </div>
+
+
+            <!-- Floating Card 2 -->
+            <div class="floating-card delivery-card">
+
+                <div class="floating-icon">
+                    <i class="fa-solid fa-truck-fast"></i>
+                </div>
+
+                <div>
+                    <strong>Fast Delivery</strong>
+                    <span>Fresh at your door</span>
+                </div>
+
+            </div>
+
+
+            <!-- Small Decorative Dots -->
+            <span class="hero-dot dot-one"></span>
+            <span class="hero-dot dot-two"></span>
+            <span class="hero-dot dot-three"></span>
+
+        </div>
+
+    </div>
+
+
+    <!-- Bottom Stats -->
+    <div class="hero-stats">
+
+        <div class="hero-stat">
+
+            <i class="fa-solid fa-mug-hot"></i>
+
+            <div>
+                <strong>50K+</strong>
+                <span>Cups Served</span>
+            </div>
+
+        </div>
+
+
+        <div class="hero-stat">
+
+            <i class="fa-solid fa-seedling"></i>
+
+            <div>
+                <strong>100%</strong>
+                <span>Fresh Beans</span>
+            </div>
+
+        </div>
+
+
+        <div class="hero-stat">
+
+            <i class="fa-solid fa-heart"></i>
+
+            <div>
+                <strong>2K+</strong>
+                <span>Happy Customers</span>
+            </div>
+
+        </div>
+
+
+        <div class="hero-stat">
+
+            <i class="fa-solid fa-clock"></i>
+
+            <div>
+                <strong>24/7</strong>
+                <span>Online Orders</span>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- =====================================
+     POPULAR COFFEE SECTION
+===================================== -->
+
+<section class="popular-section" id="menu">
+
+    <div class="section-heading">
+
+        <span class="section-tag">
+            <i class="fa-solid fa-mug-hot"></i>
+            Our Menu
+        </span>
+
+        <h2 class="section-title">
+            Popular <span>Coffee</span>
+        </h2>
+
+        <p class="section-description">
+            Discover our most loved coffees, freshly prepared
+            with premium roasted beans.
+        </p>
+
+    </div>
+
+
+    <div class="product-grid">
+
+
+        <!-- =================================
+             COFFEE 1
+        ================================== -->
+
+        <article
+            class="product-card"
+            data-name="Cafe Latte"
+        >
+
+            <div class="product-image">
+
+                <span class="product-badge">
+                    Bestseller
+                </span>
+
+                <img
+                    src="latte.jpg"
+                    alt="Cafe Latte"
+                >
+
+                <button
+                    class="quick-view"
+                    type="button"
+                    aria-label="Quick view Cafe Latte"
+                >
+                    <i class="fa-solid fa-eye"></i>
+                </button>
+
+            </div>
+
+
+            <div class="product-body">
+
+                <div class="product-rating">
+
+                    <span>
+                        <i class="fa-solid fa-star"></i>
+                        4.9
+                    </span>
+
+                    <small>
+                        120+ Reviews
+                    </small>
+
+                </div>
+
+
+                <h3>Cafe Latte</h3>
+
+                <p>
+                    Silky steamed milk blended with
+                    smooth and aromatic espresso.
+                </p>
+
+
+                <div class="product-bottom">
+
+                    <div class="product-price">
+
+                        <strong>₹199</strong>
+
+                    </div>
+
+
+                    <button
+                        class="add-cart"
+                        type="button"
+                        data-name="Cafe Latte"
+                        data-price="199"
+                        data-image="latte.jpg"
+                    >
+                        <i class="fa-solid fa-cart-plus"></i>
+                        Add
+                    </button>
+
+                </div>
+
+            </div>
+
+        </article>
+
+
+
+        <!-- =================================
+             COFFEE 2
+        ================================== -->
+
+        <article
+            class="product-card"
+            data-name="Cappuccino"
+        >
+
+            <div class="product-image">
+
+                <span class="product-badge">
+                    Popular
+                </span>
+
+                <img
+                    src="cappuccino.jpg"
+                    alt="Cappuccino"
+                >
+
+                <button
+                    class="quick-view"
+                    type="button"
+                    aria-label="Quick view Cappuccino"
+                >
+                    <i class="fa-solid fa-eye"></i>
+                </button>
+
+            </div>
+
+
+            <div class="product-body">
+
+                <div class="product-rating">
+
+                    <span>
+                        <i class="fa-solid fa-star"></i>
+                        4.8
+                    </span>
+
+                    <small>
+                        98+ Reviews
+                    </small>
+
+                </div>
+
+
+                <h3>Cappuccino</h3>
+
+                <p>
+                    Rich espresso topped with creamy
+                    steamed milk foam.
+                </p>
+
+
+                <div class="product-bottom">
+
+                    <div class="product-price">
+
+                        <strong>₹249</strong>
+
+                    </div>
+
+
+                    <button
+                        class="add-cart"
+                        type="button"
+                        data-name="Cappuccino"
+                        data-price="249"
+                        data-image="cappuccino.jpg"
+                    >
+                        <i class="fa-solid fa-cart-plus"></i>
+                        Add
+                    </button>
+
+                </div>
+
+            </div>
+
+        </article>
+
+
+
+        <!-- =================================
+             COFFEE 3
+        ================================== -->
+
+        <article
+            class="product-card"
+            data-name="Espresso"
+        >
+
+            <div class="product-image">
+
+                <span class="product-badge">
+                    Classic
+                </span>
+
+                <img
+                    src="espresso.jpg"
+                    alt="Espresso"
+                >
+
+                <button
+                    class="quick-view"
+                    type="button"
+                    aria-label="Quick view Espresso"
+                >
+                    <i class="fa-solid fa-eye"></i>
+                </button>
+
+            </div>
+
+
+            <div class="product-body">
+
+                <div class="product-rating">
+
+                    <span>
+                        <i class="fa-solid fa-star"></i>
+                        4.9
+                    </span>
+
+                    <small>
+                        86+ Reviews
+                    </small>
+
+                </div>
+
+
+                <h3>Espresso</h3>
+
+                <p>
+                    Bold, aromatic and perfectly roasted
+                    for a strong coffee experience.
+                </p>
+
+
+                <div class="product-bottom">
+
+                    <div class="product-price">
+
+                        <strong>₹179</strong>
+
+                    </div>
+
+
+                    <button
+                        class="add-cart"
+                        type="button"
+                        data-name="Espresso"
+                        data-price="179"
+                        data-image="espresso.jpg"
+                    >
+                        <i class="fa-solid fa-cart-plus"></i>
+                        Add
+                    </button>
+
+                </div>
+
+            </div>
+
+        </article>
+
+
+
+        <!-- =================================
+             COFFEE 4
+        ================================== -->
+
+        <article
+            class="product-card"
+            data-name="Cold Coffee"
+        >
+
+            <div class="product-image">
+
+                <span class="product-badge">
+                    Refreshing
+                </span>
+
+                <img
+                    src="cold-beverages.png"
+                    alt="Cold Coffee"
+                >
+
+                <button
+                    class="quick-view"
+                    type="button"
+                    aria-label="Quick view Cold Coffee"
+                >
+                    <i class="fa-solid fa-eye"></i>
+                </button>
+
+            </div>
+
+
+            <div class="product-body">
+
+                <div class="product-rating">
+
+                    <span>
+                        <i class="fa-solid fa-star"></i>
+                        4.7
+                    </span>
+
+                    <small>
+                        75+ Reviews
+                    </small>
+
+                </div>
+
+
+                <h3>Cold Coffee</h3>
+
+                <p>
+                    Creamy, chilled and refreshing coffee
+                    for a perfect summer moment.
+                </p>
+
+
+                <div class="product-bottom">
+
+                    <div class="product-price">
+
+                        <strong>₹159</strong>
+
+                    </div>
+
+
+                    <button
+                        class="add-cart"
+                        type="button"
+                        data-name="Cold Coffee"
+                        data-price="159"
+                        data-image="cold-beverages.png"
+                    >
+                        <i class="fa-solid fa-cart-plus"></i>
+                        Add
+                    </button>
+
+                </div>
+
+            </div>
+
+        </article>
+
+
+
+        <!-- =================================
+             COFFEE 5
+        ================================== -->
+
+        <article
+            class="product-card"
+            data-name="Mocha"
+        >
+
+            <div class="product-image">
+
+                <span class="product-badge">
+                    Special
+                </span>
+
+                <img
+                    src="special-combo.png"
+                    alt="Mocha"
+                >
+
+                <button
+                    class="quick-view"
+                    type="button"
+                    aria-label="Quick view Mocha"
+                >
+                    <i class="fa-solid fa-eye"></i>
+                </button>
+
+            </div>
+
+
+            <div class="product-body">
+
+                <div class="product-rating">
+
+                    <span>
+                        <i class="fa-solid fa-star"></i>
+                        4.9
+                    </span>
+
+                    <small>
+                        110+ Reviews
+                    </small>
+
+                </div>
+
+
+                <h3>Mocha</h3>
+
+                <p>
+                    Delicious chocolate and coffee blend
+                    with a rich creamy finish.
+                </p>
+
+
+                <div class="product-bottom">
+
+                    <div class="product-price">
+
+                        <strong>₹229</strong>
+
+                    </div>
+
+
+                    <button
+                        class="add-cart"
+                        type="button"
+                        data-name="Mocha"
+                        data-price="229"
+                        data-image="special-combo.png"
+                    >
+                        <i class="fa-solid fa-cart-plus"></i>
+                        Add
+                    </button>
+
+                </div>
+
+            </div>
+
+        </article>
+
+
+
+        <!-- =================================
+             COFFEE 6
+        ================================== -->
+
+        <article
+            class="product-card"
+            data-name="Caramel Coffee"
+        >
+
+            <div class="product-image">
+
+                <span class="product-badge">
+                    New
+                </span>
+
+                <img
+                    src="caramel-coffee.jpg"
+                    alt="Caramel Coffee"
+                >
+
+                <button
+                    class="quick-view"
+                    type="button"
+                    aria-label="Quick view Caramel Coffee"
+                >
+                    <i class="fa-solid fa-eye"></i>
+                </button>
+
+            </div>
+
+
+            <div class="product-body">
+
+                <div class="product-rating">
+
+                    <span>
+                        <i class="fa-solid fa-star"></i>
+                        4.8
+                    </span>
+
+                    <small>
+                        64+ Reviews
+                    </small>
+
+                </div>
+
+
+                <h3>Caramel Coffee</h3>
+
+                <p>
+                    Smooth coffee with sweet caramel
+                    and a delicious creamy finish.
+                </p>
+
+
+                <div class="product-bottom">
+
+                    <div class="product-price">
+
+                        <strong>₹219</strong>
+
+                    </div>
+
+
+                    <button
+                        class="add-cart"
+                        type="button"
+                        data-name="Caramel Coffee"
+                        data-price="219"
+                        data-image="caramel-coffee.jpg"
+                    >
+                        <i class="fa-solid fa-cart-plus"></i>
+                        Add
+                    </button>
+
+                </div>
+
+            </div>
+
+        </article>
+
+    </div>
+
+
+    <!-- View Full Menu -->
+
+    <div class="menu-button-wrapper">
+
+        <a
+            href="#menu"
+            class="view-menu-button"
+        >
+            View Full Menu
+            <i class="fa-solid fa-arrow-right"></i>
+        </a>
+
+    </div>
+
+</section>
+
+<!-- =====================================
+     PRICING SECTION
+===================================== -->
+
+<section class="pricing-section" id="pricing">
+
+    <!-- Section Heading -->
+    <div class="section-heading">
+
+        <span class="section-tag">
+            <i class="fa-solid fa-tags"></i>
+            Simple Pricing
+        </span>
+
+        <h2 class="section-title">
+            Choose Your <span>Perfect Plan</span>
+        </h2>
+
+        <p class="section-description">
+            Enjoy your favourite coffee every day with
+            our flexible and affordable coffee plans.
+        </p>
+
+    </div>
+
+
+    <!-- Pricing Cards -->
+    <div class="pricing-grid">
+
+
+        <!-- =================================
+             BASIC PLAN
+        ================================== -->
+
+        <article class="price-card">
+
+            <div class="price-icon">
+                <i class="fa-solid fa-mug-hot"></i>
+            </div>
+
+            <h3>Starter</h3>
+
+            <p class="price-description">
+                Perfect for occasional coffee lovers.
+            </p>
+
+
+            <div class="price">
+
+                <span class="currency">₹</span>
+
+                <strong>499</strong>
+
+                <span class="period">
+                    /month
+                </span>
+
+            </div>
+
+
+            <ul class="price-features">
+
+                <li>
+                    <i class="fa-solid fa-check"></i>
+                    5 Coffee Cups
+                </li>
+
+                <li>
+                    <i class="fa-solid fa-check"></i>
+                    Free Customization
+                </li>
+
+                <li>
+                    <i class="fa-solid fa-check"></i>
+                    Standard Delivery
+                </li>
+
+                <li class="disabled">
+                    <i class="fa-solid fa-xmark"></i>
+                    Priority Delivery
+                </li>
+
+                <li class="disabled">
+                    <i class="fa-solid fa-xmark"></i>
+                    Exclusive Offers
+                </li>
+
+            </ul>
+
+
+            <button
+                class="price-order-btn"
+                type="button"
+                data-plan="Starter"
+                data-price="499"
+            >
+                Choose Starter
+                <i class="fa-solid fa-arrow-right"></i>
+            </button>
+
+        </article>
+
+
+
+        <!-- =================================
+             POPULAR PLAN
+        ================================== -->
+
+        <article class="price-card popular-plan">
+
+            <div class="popular-label">
+                Most Popular
+            </div>
+
+
+            <div class="price-icon">
+                <i class="fa-solid fa-crown"></i>
+            </div>
+
+            <h3>Premium</h3>
+
+            <p class="price-description">
+                Best choice for regular coffee lovers.
+            </p>
+
+
+            <div class="price">
+
+                <span class="currency">₹</span>
+
+                <strong>899</strong>
+
+                <span class="period">
+                    /month
+                </span>
+
+            </div>
+
+
+            <ul class="price-features">
+
+                <li>
+                    <i class="fa-solid fa-check"></i>
+                    12 Coffee Cups
+                </li>
+
+                <li>
+                    <i class="fa-solid fa-check"></i>
+                    Free Customization
+                </li>
+
+                <li>
+                    <i class="fa-solid fa-check"></i>
+                    Free Delivery
+                </li>
+
+                <li>
+                    <i class="fa-solid fa-check"></i>
+                    Priority Delivery
+                </li>
+
+                <li>
+                    <i class="fa-solid fa-check"></i>
+                    Exclusive Offers
+                </li>
+
+            </ul>
+
+
+            <button
+                class="price-order-btn"
+                type="button"
+                data-plan="Premium"
+                data-price="899"
+            >
+                Choose Premium
+                <i class="fa-solid fa-arrow-right"></i>
+            </button>
+
+        </article>
+
+
+
+        <!-- =================================
+             PREMIUM PLAN
+        ================================== -->
+
+        <article class="price-card">
+
+            <div class="price-icon">
+                <i class="fa-solid fa-star"></i>
+            </div>
+
+            <h3>Ultimate</h3>
+
+            <p class="price-description">
+                For true coffee lovers who want more.
+            </p>
+
+
+            <div class="price">
+
+                <span class="currency">₹</span>
+
+                <strong>1299</strong>
+
+                <span class="period">
+                    /month
+                </span>
+
+            </div>
+
+
+            <ul class="price-features">
+
+                <li>
+                    <i class="fa-solid fa-check"></i>
+                    Unlimited Coffee
+                </li>
+
+                <li>
+                    <i class="fa-solid fa-check"></i>
+                    Free Customization
+                </li>
+
+                <li>
+                    <i class="fa-solid fa-check"></i>
+                    Free Delivery
+                </li>
+
+                <li>
+                    <i class="fa-solid fa-check"></i>
+                    Priority Delivery
+                </li>
+
+                <li>
+                    <i class="fa-solid fa-check"></i>
+                    VIP Exclusive Offers
+                </li>
+
+            </ul>
+
+
+            <button
+                class="price-order-btn"
+                type="button"
+                data-plan="Ultimate"
+                data-price="1299"
+            >
+                Choose Ultimate
+                <i class="fa-solid fa-arrow-right"></i>
+            </button>
+
+        </article>
+
+    </div>
+
+
+    <!-- Pricing Note -->
+
+    <div class="pricing-note">
+
+        <i class="fa-solid fa-shield-halved"></i>
+
+        <span>
+            Cancel anytime • No hidden charges • Fresh coffee guaranteed
+        </span>
+
+    </div>
+
+</section>
+
+<!-- Statistics Section -->
+<section class="stats-section">
+
+    <div class="section-content">
+
+        <div class="stat-box">
+            <i class="fa-solid fa-users"></i>
+            <h2 class="counter" data-target="5000">0</h2>
+            <p>Happy Customers</p>
+        </div>
+
+
+        <div class="stat-box">
+            <i class="fa-solid fa-mug-hot"></i>
+            <h2 class="counter" data-target="250">0</h2>
+            <p>Coffee Products</p>
+        </div>
+
+
+        <div class="stat-box">
+            <i class="fa-solid fa-calendar-days"></i>
+            <h2 class="counter" data-target="15">0</h2>
+            <p>Years Experience</p>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- Video Section -->
+<section class="video-section">
+
+    <h2 class="section-title">Coffee Making</h2>
+
+    <div class="section-content">
+
+        <video class="coffee-video" controls autoplay muted loop>
+            <source src="coffee.mp4" type="video/mp4">
+        </video>
+
+    </div>
+
+</section>
+
+
+    <!-- About Section  -->
+     <section class="about-section" id="about">
+        <div class="section-content">
+            <div class="about-image-wrapper">
+                <img src="about-image.jpg"alt="About" class="about-image"data-animation="zoom-in">
+                <div class="about-details">
+                    <h2 class="section-title">About Us</h2>
+                    <p class="text">At Coffee House in Berndorf , India , we pride ouerselves on being a go-to desitination for coffee lovers and coverstion seakers alike. we'are dedicated to providing an expectional coffee experience in a cozy and inviting atmosphere , where guests can relax, unwind,and enjoy their time in confort.
+                         </p>
+                         <div class="social-link-list">
+                            <a href="#" class="social-link"><i class="fa-brands fa-facebook"></i></a>
+                              <a href="#" class="social-link"><i class="fa-brands fa-instagram"></i></a>
+                                <a href="#" class="social-link"><i class="fa-brands fa-x-twitter"></i></a>
+                         </div>
+                </div>
+            </div>
+        </div>
+     </section>
+     <!--Menu section-->
+     <section class="menu-section" id="menu">
+        <h2 class="section-title">Our Menu</h2>
+        <div class="section-content">
+            <ul class="menu-list">
+                <li class="menu-item">
+                    <img src="hot-beverages.png" alt="Hot Beverages" class="menu-image">
+                    <h3 class="name">Hot Beverages</h3>
+                    <p class="text">Wide range of Steaming hot coffee to make you fresh and light</p>
+                </li>
+                  <li class="menu-item" data-animation="slide-left">
+                    <img src="cold-beverages.png" alt="Cold Beverages" class="menu-image">
+                    <h3 class="name">Cold Beverages</h3>
+                    <p class="text">Cremy and Frothy cold coffee to make you fresh and light</p>
+                </li>
+                  <li class="menu-item" data-animation="slide-left">
+                    <img src="refreshment.png" alt="Refreshment" class="menu-image">
+                    <h3 class="name">Refreshment</h3>
+                    <p class="text">Fruit and icy refreshment to make you feel refresh</p>
+                </li>
+                  <li class="menu-item" data-animation="slide-left">
+                    <img src="special-combo.png" alt="Special Combos" class="menu-image">
+                    <h3 class="name">Special Combos</h3>
+                    <p class="text">Your favorite eating and drinking combinations</p>
+                </li>
+                  <li class="menu-item" data-animation="slide-left">
+                    <img src="desserts.png" alt="Desserts" class="menu-image">
+                    <h3 class="name">Desserts</h3>
+                    <p class="text">Satiate your palate and take you on a culinary treat</p>
+                </li>
+                  <li class="menu-item" data-animation="slide-left">
+                    <img src="burger-frenchfries.png" alt="burger & French Fries" class="menu-image">
+                    <h3 class="name">Burger  & French Fries</h3>
+                    <p class="text">Quick bites to satisfy your small size hunger.</p>
+                </li>
+            </ul>
+        </div>
+     </section>
+
+     <!-- Order Section -->
+
+<section class="order-section" id="order">
+
+    <h2 class="section-title">Place Your Order</h2>
+
+    <div class="section-content">
+
+        <form class="order-form">
+
+            <label>Name</label>
+            <input type="text" 
+            placeholder="Enter your name" 
+            required>
+
+
+            <label>Coffee</label>
+            <select required>
+
+                <option>Select Coffee</option>
+                <option>Basic Coffee - ₹99</option>
+                <option>Premium Coffee - ₹149</option>
+                <option>Special Coffee - ₹199</option>
+
+            </select>
+
+
+            <label>Quantity</label>
+            <input type="number"
+            placeholder="Enter quantity"
+            min="1"
+            required>
+
+
+            <label>Address</label>
+            <textarea 
+            placeholder="Enter delivery address"
+            required></textarea>
+
+
+            <button type="submit">
+                Place Order
+            </button>
+
+        </form>
+
+    </div>
+
+</section>
+
+<!-- Rating Section -->
+
+<section class="rating-section">
+
+    <div class="section-content">
+
+        <div class="rating-box">
+
+            <h2>⭐⭐⭐⭐⭐</h2>
+
+            <h3>4.9/5</h3>
+
+            <p>
+                Rated by 500+ Happy Customers
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+     <!--Testimonials-section-->
+     <section class="testimonials-section" id="testimonial">
+        <h2 class="section-title">Testimonials</h2>
+        <div class="section-content">
+            <div class="slider-container swiper">
+                <div class="slider-wrapper">
+                    <ul class="testimonials-list swiper-wrapper">
+                        <li class="testimonials swiper-slide">
+                            <img src="user-1.jpg" alt="User" class="user-image">
+                              <h3 class="name">Sarah johnson</h3> 
+                               <i class="feedback">"Loved the French roast. perfectly balanced and rich. will order again"</i> 
+                        </li> 
+                         <li class="testimonials swiper-slide">
+                            <img src="user-2.jpg" alt="User" class="user-image">
+                              <h3 class="name">James Wilson</h3> 
+                               <i class="feedback">"Great expresso blend! Smooth and bold flavor. Fast shipping too!"</i> 
+                        </li> 
+                         <li class="testimonials swiper-slide">
+                            <img src="user-3.jpg" alt="User" class="user-image">
+                              <h3 class="name">Michael Brown</h3> 
+                               <i class="feedback">"Fantastic mocha flovour. Fresh and aromatic. Quick shipping!"</i> 
+                        </li> 
+                         <li class="testimonials swiper-slide">
+                            <img src="user-4.jpg" alt="User" class="user-image">
+                              <h3 class="name">Emily Harris</h3> 
+                               <i class="feedback">"Excellent quality! Fresh beans and quickly delivery. Highly recommend."</i> 
+                        </li> 
+                         <li class="testimonials swiper-slide">
+                            <img src="user-5.jpg" alt="User" class="user-image">
+                              <h3 class="name">Anthony Thompson</h3> 
+                               <i class="feedback">"Best decaf I've tried! Smooth and flovorful.Arrived promptly."</i> 
+                        </li>                     
+                    </ul>
+                    <div class="swiper-slide-button swiper-pagination"></div>
+                    <div class="swiper-slide-button swiper-button-prev"></div>
+                    <div class="swiper-slide-button swiper-button-next"></div>
+                </div>
+            </div>
+        </div>
+     </section>
+     
+     <!--gallery Section-->
+     <section class="gallery-section" id="gallery">
+        <h2 class="section-title">Gallery</h2>
+        <div class="section-content">
+            <ul class="gallery-list">
+                <li class="gallery-item" data-animation="slide-right">
+                    <img src="gallery-1.jpg" alt="Gallery" class="gallery-image">
+                </li>
+                <li class="gallery-item" data-animation="slide-right">
+                    <img src="gallery-2.jpg" alt="Gallery" class="gallery-image">
+                </li>
+                <li class="gallery-item" data-animation="slide-right">
+                    <img src="gallery-3.jpg" alt="Gallery" class="gallery-image">
+                </li>
+                <li class="gallery-item" data-animation="slide-right">
+                    <img src="gallery-4.jpg" alt="Gallery" class="gallery-image">
+                </li>
+                <li class="gallery-item" data-animation="slide-right">
+                    <img src="gallery-5.jpg" alt="Gallery" class="gallery-image">
+                </li>
+                <li class="gallery-item" data-animation="slide-right">
+                    <img src="gallery-6.jpg" alt="Gallery" class="gallery-image">
+                </li>
+            </ul>
+        </div>
+     </section>
+
+     <!--Contact Section-->
+     <section class="contact-section" id="contact">
+        <h2 class="section-title">Contact Us</h2>
+        <div class="section-content">
+            <ul class="contact-info-list">
+                <li class="contact-info">
+                    <i class= "fa-solid fa-location-crosshairs"></i>
+                        <p>123 Campsite Avenue, Wilderness, CA 98765</p>
+                    
+
+                </li>
+                  <li class="contact-info">
+                    <i class= "fa-regular fa-envelope"></i>
+                        <p>info@coffeeshopwebsite.com</p>
+                    
+
+                </li>
+                  <li class="contact-info">
+                    <i class= "fa-solid fa-phone"></i>
+                        <p>(123) 456-78909</p>
+                
+
+                </li>
+                  <li class="contact-info">
+                    <i class= "fa-regular fa-clock"></i>
+                        <p>Monday - Friday:9:00 AM - 5:00 PM </p>
+                    
+
+                </li>
+                  <li class="contact-info">
+                    <i class= "fa-regular fa-clock"></i>
+                        <p>Sunday: Closed</p>
+                    
+
+                </li>
+                  <li class="contact-info">
+                    <i class= "fa-solid fa-globe"></i>
+                        <p>www.coffeedelight.com</p>
+                    
+
+                </li>
+            </ul>
+
+            <form action="#" class="contact-form">
+            <input type="text" placeholder="Your name" class="form-input" required>
+            <input type="email" placeholder="Your email" class="form-input" required>
+            <textarea placeholder="Your message" class="form-input" required></textarea>
+            <button class="submit-button">Submit</button>
+            </form>
+
+            <!-- Google Map -->
+            <!-- Google Map -->
+
+           <div class="map-container">
+
+                <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m18..."
+                    loading="lazy">
+                </iframe>
+
+            </div>
+           
+
+        </div>
+</section> 
+
+<!-- Newsletter Section -->
+
+<section class="newsletter-section">
+
+    <div class="section-content">
+
+        <h2>Subscribe For Updates</h2>
+
+        <p>
+            Get latest coffee offers and news directly in your inbox.
+        </p>
+
+        <form class="subscribe-form">
+
+            <input type="email" 
+            placeholder="Enter your email" 
+            required>
+
+            <button type="submit">
+                Subscribe
+            </button>
+
+        </form>
+
+    </div>
+
+</section>
+
+<!-- FAQ Section -->
+
+<section class="faq-section">
+
+    <h2 class="section-title">Frequently Asked Questions</h2>
+
+    <div class="section-content">
+
+        <div class="faq-item">
+
+            <button class="faq-question">
+                Q. Delivery Time?
+                <i class="fa-solid fa-plus"></i>
+            </button>
+
+            <div class="faq-answer">
+                <p>A. 30 Minutes.</p>
+            </div>
+
+        </div>
+
+
+        <div class="faq-item">
+
+            <button class="faq-question">
+                Q. Is Online Payment Available?
+                <i class="fa-solid fa-plus"></i>
+            </button>
+
+            <div class="faq-answer">
+                <p>A. Yes.</p>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+<!--Footer Section-->
+<footer class="footer-section">
+    <div class="section-content">
+        <p class="copyright-text">© 2026 Coffee Shop</p>
+
+        <div class="social-link-list">
+                              <a href="#" class="social-link"><i class="fa-brands fa-facebook"></i></a>
+                              <a href="#" class="social-link"><i class="fa-brands fa-instagram"></i></a>
+                              <a href="#" class="social-link"><i class="fa-brands fa-x-twitter"></i></a>
+        </div>
+        <p class="policy-text">
+            <a href="#" class="policy-link">Privacy policy</a>
+            <span class="separator">●</span>
+            <a href="#" class="policy-link">Refund policy</a>
+        </p>
+    </div>
+</footer>
+</main>
+
+<!-- Back To Top Button -->
+
+<button id="topBtn">
+    <i class="fa-solid fa-arrow-up"></i>
+</button>
+
+<!--Link Swiper Script-->
+<script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js"></script>
+
+<!-- WhatsApp Button -->
+
+<a href="https://wa.me/91XXXXXXXXXX"
+class="whatsapp"
+target="_blank">
+
+<i class="fa-brands fa-whatsapp"></i>
+
+</a>
+
+<!--Link custom Script-->
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script src="script.js"></script>
+</body>
+</html> 
